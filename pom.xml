@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.zerozzl.study</groupId>
+	<artifactId>java-study</artifactId>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+	<name>java study</name>
+	<description>java study project</description>
+
+	<properties>
+		<jetty.context.path>/java-study</jetty.context.path>
+	</properties>
+
+	<profiles>
+		<!-- 配置在未指定-Djetty.port属性的情况下默认使用的端口号 -->
+		<profile>
+			<id>default-jetty-port</id>
+			<activation>
+				<property>
+					<name>!jetty.port</name>
+				</property>
+			</activation>
+			<properties>
+				<jetty.port>8080</jetty.port>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+			<!-- 只为了将webapp目录也被添加进eclipse的源码视图中 -->
+			<testResource>
+				<directory>src/main/webapp</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>WEB-INF/web*.xml</include>
+				</includes>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<warName>${project.artifactId}</warName>
+					<packagingExcludes>WEB-INF/web.xml</packagingExcludes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.4.6.v20170531</version>
+				<configuration>
+					<httpConnector>
+						<port>${jetty.port}</port>
+					</httpConnector>
+					<useTestClasspath>false</useTestClasspath>
+					<scanIntervalSeconds>30</scanIntervalSeconds>
+					<webAppConfig>
+						<contextPath>${jetty.context.path}</contextPath>
+					</webAppConfig>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
