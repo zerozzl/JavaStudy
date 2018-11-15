@@ -1,4 +1,4 @@
-package com.zerozzl.study.java.designpatterns;
+package com.zerozzl.study.designpatterns;
 
 /**
  * 简单工厂

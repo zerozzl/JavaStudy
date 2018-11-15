@@ -1,4 +1,4 @@
-package com.zerozzl.study.java.designpatterns;
+package com.zerozzl.study.designpatterns;
 
 import java.util.ArrayList;
 import java.util.List;
