@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.zerozzl.study.lang.JdbcUtils;
-import com.zerozzl.study.model.User;
+import com.zerozzl.study.common.dao.impl.UserDaoImpl;
+import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.lang.db.JdbcUtils;
 
 /**
  * Servlet implementation class UserServlet
@@ -58,7 +59,8 @@ public class UserServlet extends HttpServlet {
 	}
 
 	private List<User> findUsers() throws SQLException {
-		return JdbcUtils.selectUser();
+		UserDaoImpl dao = new UserDaoImpl();
+		return dao.selectAll();
 	}
 
 }

@@ -18,7 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 
-import com.zerozzl.study.model.User;
+import com.zerozzl.study.common.model.User;
 
 public class IOTest {
 

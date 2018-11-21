@@ -1,13 +1,23 @@
-package com.zerozzl.study.model;
+package com.zerozzl.study.common.model;
 
 import java.io.Serializable;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component(value = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1898000128111707363L;
+	@Value("-1")
 	private int id;
+	@Value("default user")
 	private String name;
+	@Value("10")
 	private int age;
+	@Autowired
+	private Teacher teacher;
 
 	public User() {
 		super();
@@ -20,11 +30,13 @@ public class User implements Serializable {
 		this.id = id;
 		this.name = name;
 		this.age = age;
+		this.teacher = null;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age + ", teacher="
+				+ (teacher != null ? teacher.toString() : "") + "]";
 	}
 
 	public int getId() {
@@ -49,6 +61,14 @@ public class User implements Serializable {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 }

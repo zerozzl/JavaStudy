@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean id="userDao" class="com.zerozzl.study.common.dao.impl.UserDaoImpl" />
+	<bean id="xmlTimeAspect" class="com.zerozzl.study.spring.aop.XmlTimeAspect" />
+	<bean id="xmlLogAspect" class="com.zerozzl.study.spring.aop.XmlLogAspect" />
+
+	<aop:config>
+		<aop:aspect id="time" ref="xmlTimeAspect" order="1">
+			<aop:pointcut id="addAllMethod" expression="execution(* com.zerozzl.study.common.dao.impl.UserDaoImpl.*(..))" />
+			<aop:before method="printTime" pointcut-ref="addAllMethod" />
+			<aop:after method="printTime" pointcut-ref="addAllMethod" />
+		</aop:aspect>
+		<aop:aspect id="log" ref="xmlLogAspect" order="2">
+			<aop:pointcut id="printLog" expression="execution(* com.zerozzl.study.common.dao.impl.UserDaoImpl.*(..))" />
+			<aop:before method="logBefore" pointcut-ref="printLog" />
+			<aop:after method="logAfter" pointcut-ref="printLog" />
+		</aop:aspect>
+	</aop:config>
+
+</beans>

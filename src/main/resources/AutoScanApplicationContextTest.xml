@@ -14,13 +14,4 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<bean id="userBean" class="com.zerozzl.study.model.User">
-		<constructor-arg name="id" value="1" />
-		<constructor-arg name="name" value="test" />
-		<constructor-arg name="age" value="123" />
-		<property name="id" value="2" />
-		<property name="name" value="test1" />
-		<property name="age" value="456" />
-	</bean>
-
 </beans>
