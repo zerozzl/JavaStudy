@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			out.println("who are you");
 		}
-		out.println("<a href='user.do?action=list'>用户管理</a>");
+		out.println("<a href='user.serv?action=list'>用户管理</a>");
 	}
 
 	/**

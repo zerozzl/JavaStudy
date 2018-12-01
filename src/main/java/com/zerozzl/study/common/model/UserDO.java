@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component(value = "user")
-public class User implements Serializable {
+public class UserDO implements Serializable {
 
 	private static final long serialVersionUID = 1898000128111707363L;
 	@Value("-1")
@@ -17,13 +17,13 @@ public class User implements Serializable {
 	@Value("10")
 	private int age;
 	@Autowired
-	private Teacher teacher;
+	private TeacherDO teacher;
 
-	public User() {
+	public UserDO() {
 		super();
 	}
 
-	public User(
+	public UserDO(
 			int id,
 			String name,
 			int age) {
@@ -63,11 +63,11 @@ public class User implements Serializable {
 		this.age = age;
 	}
 
-	public Teacher getTeacher() {
+	public TeacherDO getTeacher() {
 		return teacher;
 	}
 
-	public void setTeacher(Teacher teacher) {
+	public void setTeacher(TeacherDO teacher) {
 		this.teacher = teacher;
 	}
 

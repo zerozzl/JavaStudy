@@ -108,7 +108,7 @@ public class ConstructorTest {
 
 	public static void main(String[] args) throws Exception {
 		// 1.加载Class对象
-		Class clazz = Class.forName("com.zerozzl.study.java.lang.reflect.Student");
+		Class clazz = Class.forName("com.zerozzl.study.lang.reflect.Student");
 		
 		// 2.获取所有公有构造方法
 		System.out.println("**********************所有公有构造方法*********************************");

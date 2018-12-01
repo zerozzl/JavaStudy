@@ -7,8 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import com.zerozzl.study.common.model.Teacher;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.TeacherDO;
+import com.zerozzl.study.common.model.UserDO;
 
 @SuppressWarnings("deprecation")
 public class BeanFactoryTest {
@@ -16,11 +16,9 @@ public class BeanFactoryTest {
 	private static void xmlBeanFactoryTest() {
 		Resource resource = new ClassPathResource("BeanFactoryTest.xml");
 		BeanFactory factory = new XmlBeanFactory(resource);
-
-		
-		Teacher teacher = factory.getBean("teacherBean", Teacher.class);
-		User user1= factory.getBean("userBean1", User.class);
-		User user2 = factory.getBean("userBean2", User.class);
+		TeacherDO teacher = factory.getBean("teacherBean", TeacherDO.class);
+		UserDO user1= factory.getBean("userBean1", UserDO.class);
+		UserDO user2 = factory.getBean("userBean2", UserDO.class);
 		System.out.println(teacher);
 		System.out.println(user1);
 		System.out.println(user2);
@@ -29,7 +27,7 @@ public class BeanFactoryTest {
 	private static void applicationContextTest() {
 		@SuppressWarnings("resource")
 		ApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "BeanFactoryTest.xml" });
-		User user = context.getBean("userBean1", User.class);
+		UserDO user = context.getBean("userBean1", UserDO.class);
 		System.out.println(user);
 	}
 

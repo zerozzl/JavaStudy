@@ -37,11 +37,9 @@ public class DiskClassLoader extends ClassLoader {
 			bos.close();
 
 			return defineClass(name, data, 0, data.length);
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return super.findClass(name);
 	}
 

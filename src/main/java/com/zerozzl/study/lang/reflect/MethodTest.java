@@ -7,7 +7,7 @@ public class MethodTest {
 
 	public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		// 1.获取Class对象
-		Class stuClass = Class.forName("com.zerozzl.study.java.lang.reflect.Student");
+		Class stuClass = Class.forName("com.zerozzl.study.lang.reflect.Student");
 		// 2.获取所有公有方法
 		System.out.println("***************获取所有的”公有“方法*******************");
 		stuClass.getMethods();
@@ -20,11 +20,11 @@ public class MethodTest {
 		for (Method m : methodArray) {
 			System.out.println(m);
 		}
+		// 实例化一个Student对象
+		Object obj = stuClass.getConstructor().newInstance();
 		System.out.println("***************获取公有的show1()方法*******************");
 		Method m = stuClass.getMethod("show1", String.class);
 		System.out.println(m);
-		// 实例化一个Student对象
-		Object obj = stuClass.getConstructor().newInstance();
 		m.invoke(obj, "刘德华");
 
 		System.out.println("***************获取私有的show4()方法******************");

@@ -6,7 +6,7 @@
 <title>java study</title>
 </head>
 <body>
-<form action="login.do" method="post">
+<form action="login.serv" method="post">
 	用户名：
 	<input type="text" name="name">
 	密码：

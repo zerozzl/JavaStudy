@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zerozzl.study.common.dao.UserDao;
 import com.zerozzl.study.common.dao.impl.UserDaoImpl;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 public class AopSpringNativeTest {
 
@@ -17,7 +17,7 @@ public class AopSpringNativeTest {
 		proxyFactory.setTarget(new UserDaoImpl());
 		proxyFactory.addAdvice(new SpringNativeAspect());
 		UserDao proxy = (UserDao) proxyFactory.getProxy();
-		List<User> users = proxy.selectAll();
+		List<UserDO> users = proxy.selectAll();
 		System.out.println(users);
 	}
 
@@ -25,7 +25,7 @@ public class AopSpringNativeTest {
 		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "AopSpringNativeTest.xml" });
 		UserDao proxy = (UserDao) ctx.getBean("aopSpringNativeProxy");
-		List<User> users = proxy.selectAll();
+		List<UserDO> users = proxy.selectAll();
 		System.out.println(users);
 	}
 

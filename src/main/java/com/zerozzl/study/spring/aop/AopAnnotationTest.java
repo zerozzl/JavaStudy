@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.zerozzl.study.common.dao.UserDao;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 public class AopAnnotationTest {
 
@@ -14,7 +14,7 @@ public class AopAnnotationTest {
 		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("AopAnnotationTest.xml");
 		UserDao userDao = ctx.getBean("userDao", UserDao.class);
-		List<User> users = userDao.selectAll();
+		List<UserDO> users = userDao.selectAll();
 		System.out.println(users);
 	}
 	

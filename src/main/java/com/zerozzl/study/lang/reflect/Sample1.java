@@ -23,9 +23,9 @@ public class Sample1 {
 
 		// 使用反射调用
 		Class clz = Class.forName("com.zerozzl.study.java.lang.reflect.Sample2");
-		Method setPriceMethod = clz.getMethod("setPrice", int.class);
 		Constructor appleConstructor = clz.getConstructor();
 		Object appleObj = appleConstructor.newInstance();
+		Method setPriceMethod = clz.getMethod("setPrice", int.class);
 		setPriceMethod.invoke(appleObj, 14);
 		Method getPriceMethod = clz.getMethod("getPrice");
 		System.out.println("Apple Price:" + getPriceMethod.invoke(appleObj));

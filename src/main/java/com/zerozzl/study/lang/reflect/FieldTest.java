@@ -6,7 +6,7 @@ public class FieldTest {
 
 	public static void main(String[] args) throws Exception {
 		// 1.获取Class对象
-		Class stuClass = Class.forName("com.zerozzl.study.java.lang.reflect.Student");
+		Class stuClass = Class.forName("com.zerozzl.study.lang.reflect.Student");
 		
 		// 2.获取字段
 		System.out.println("************获取所有公有的字段********************");
@@ -21,11 +21,11 @@ public class FieldTest {
 			System.out.println(f);
 		}
 		
+		// 获取一个对象
+		Object obj = stuClass.getConstructor().newInstance();// 产生Student对象--》Student stu = new Student();
 		System.out.println("*************获取公有字段**并调用***********************************");
 		Field f = stuClass.getField("name");
 		System.out.println(f);
-		// 获取一个对象
-		Object obj = stuClass.getConstructor().newInstance();// 产生Student对象--》Student stu = new Student();
 		// 为字段设置值
 		f.set(obj, "刘德华");// 为Student对象中的name属性赋值--》stu.name = "刘德华"
 		// 验证

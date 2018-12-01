@@ -13,13 +13,13 @@ public class ExecutorServiceTest {
 
 		executorService.execute(new Runnable() {
 			public void run() {
-				System.out.println("Asynchronous task");
+				System.out.println("Asynchronous Runnable");
 			}
 		});
 
 		Future future1 = executorService.submit(new Runnable() {
 			public void run() {
-				System.out.println("Asynchronous task");
+				System.out.println("Asynchronous Runnable Future");
 			}
 		});
 		System.out.println(future1.get()); // returns null if the task has finished correctly.
@@ -31,7 +31,6 @@ public class ExecutorServiceTest {
 			}
 		});
 		System.out.println("future.get() = " + future.get());
-
 		executorService.shutdown();
 	}
 

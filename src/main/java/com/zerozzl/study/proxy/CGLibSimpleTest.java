@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import com.zerozzl.study.common.dao.impl.UserDaoImpl;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
@@ -29,7 +29,7 @@ public class CGLibSimpleTest implements MethodInterceptor {
 		enhancer.setSuperclass(UserDaoImpl.class);
 		enhancer.setCallback(new CGLibSimpleTest());
 		UserDaoImpl instance = (UserDaoImpl) enhancer.create();
-		List<User> users = instance.selectAll();
+		List<UserDO> users = instance.selectAll();
 		System.out.println(users);
 	}
 

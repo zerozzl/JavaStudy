@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.zerozzl.study.common.dao.UserDao;
 import com.zerozzl.study.common.dao.impl.UserDaoImpl;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 public class DynamicProxyTest implements InvocationHandler {
 
@@ -32,9 +32,9 @@ public class DynamicProxyTest implements InvocationHandler {
 	public static void main(String[] args) {
 		UserDaoImpl target = new UserDaoImpl();
 		InvocationHandler handler = new DynamicProxyTest(target);
-		UserDao interf = (UserDao) Proxy.newProxyInstance(handler.getClass().getClassLoader(),
+		UserDao interf = (UserDao) Proxy.newProxyInstance(target.getClass().getClassLoader(),
 				target.getClass().getInterfaces(), handler);
-		List<User> users = interf.selectAll();
+		List<UserDO> users = interf.selectAll();
 		System.out.println(users);
 	}
 

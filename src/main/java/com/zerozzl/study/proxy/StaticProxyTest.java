@@ -4,15 +4,15 @@ import java.util.List;
 
 import com.zerozzl.study.common.dao.UserDao;
 import com.zerozzl.study.common.dao.impl.UserDaoImpl;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 public class StaticProxyTest implements UserDao {
 
 	private UserDao dao = new UserDaoImpl();
 
 	@Override
-	public List<User> selectAll() {
-		List<User> users = null;
+	public List<UserDO> selectAll() {
+		List<UserDO> users = null;
 		System.out.println("Before invoke selectAll");
 		users = dao.selectAll();
 		System.out.println("After invoke selectAll");
@@ -21,7 +21,7 @@ public class StaticProxyTest implements UserDao {
 
 	public static void main(String[] args) {
 		StaticProxyTest proxy = new StaticProxyTest();
-		List<User> users = proxy.selectAll();
+		List<UserDO> users = proxy.selectAll();
 		System.out.println(users);
 	}
 

@@ -18,7 +18,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 
 public class IOTest {
 
@@ -289,7 +289,7 @@ public class IOTest {
 		ObjectOutputStream output = null;
 		try {
 			output = new ObjectOutputStream(new FileOutputStream(filename));
-			output.writeObject(new User(1, "test", 123));
+			output.writeObject(new UserDO(1, "test", 123));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -303,7 +303,7 @@ public class IOTest {
 		ObjectInputStream input = null;
 		try {
 			input = new ObjectInputStream(new FileInputStream(filename));
-			User object = (User) input.readObject();
+			UserDO object = (UserDO) input.readObject();
 			System.out.println(object.toString());
 		} catch (Exception e) {
 			e.printStackTrace();

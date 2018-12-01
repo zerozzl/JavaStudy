@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.zerozzl.study.common.dao.impl.UserDaoImpl;
-import com.zerozzl.study.common.model.User;
+import com.zerozzl.study.common.model.UserDO;
 import com.zerozzl.study.lang.db.JdbcUtils;
 
 /**
@@ -38,7 +38,7 @@ public class UserServlet extends HttpServlet {
 		JdbcUtils.init();
 		String action = request.getParameter("action");
 		if (action.equals("list")) {
-			List<User> users = null;
+			List<UserDO> users = null;
 			try {
 				users = this.findUsers();
 			} catch (SQLException e) {
@@ -58,7 +58,7 @@ public class UserServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private List<User> findUsers() throws SQLException {
+	private List<UserDO> findUsers() throws SQLException {
 		UserDaoImpl dao = new UserDaoImpl();
 		return dao.selectAll();
 	}
